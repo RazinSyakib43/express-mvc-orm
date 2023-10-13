@@ -16,6 +16,7 @@ const books = [
   },
 ];
 
+// get all books
 const findAllBooks = (req, res) => {
   res.status(200).json({
     code: 200,
@@ -26,7 +27,30 @@ const findAllBooks = (req, res) => {
   });
 };
 
+// get book by id
+const getBookById = (req, res) => {
+  const id = req.params.id;
+  const book = books.find((book) => book.id === Number(id));
+
+  if (!book) {
+    res.status(404).json({
+      code: 404,
+      status: "error",
+      error: true,
+      message: "Book not found",
+    });
+  }
+
+  res.status(200).json({
+    code: 200,
+    status: "success",
+    error: false,
+    message: "Book retrieved successfully",
+    data: book,
+  });
+};
 
 module.exports = {
-    findAllBooks
-}
+  findAllBooks,
+  getBookById
+};
