@@ -13,31 +13,35 @@ const findAllBooks = async (req, res) => {
       data: data,
     });
   } catch (error) {
-    console.log(error);
+    console.log(error, "<- error findAllBooks");
   }
 };
 
 // get book by id
-const getBookById = (req, res) => {
-  const id = req.params.id;
-  const book = books.find((book) => book.id === Number(id));
+const getBookById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const book = await Book.findByPk(id);
 
-  if (!book) {
-    res.status(404).json({
-      code: 404,
-      status: "error",
-      error: true,
-      message: "Book not found",
-    });
-  }
-
-  res.status(200).json({
-    code: 200,
-    status: "success",
-    error: false,
-    message: "Book retrieved successfully",
-    data: book,
-  });
+        if (!book) {
+          res.status(404).json({
+            code: 404,
+            status: "error",
+            error: true,
+            message: `Book with id ${id} not found`,
+          });
+        } else {
+          res.status(200).json({
+            code: 200,
+            status: "success",
+            error: false,
+            message: "Book retrieved successfully",
+            data: book,
+          });
+        }
+    } catch (error) {
+        console.log(error, "<- error getBookById");
+    }
 };
 
 // post new book
