@@ -50,7 +50,32 @@ const getBookById = (req, res) => {
   });
 };
 
+// post new book
+const createNewBook = (req, res) => {
+  const { title, description } = req.body;
+
+  // get new id for new book
+  const lastItemBookId = books[books.length - 1].id;
+  const newIdBook = lastItemBookId + 1;
+
+  const newBookData = {
+    id: newIdBook,
+    title: title,
+    description: description,
+  };
+  books.push(newBookData);
+
+  res.status(201).json({
+    code: 201,
+    status: "success",
+    error: false,
+    message: "Book created successfully",
+    data: newBookData,
+  });
+};
+
 module.exports = {
   findAllBooks,
-  getBookById
+  getBookById,
+  createNewBook,
 };
