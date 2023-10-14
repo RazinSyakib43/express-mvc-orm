@@ -2,7 +2,7 @@
 A simple REST API with MVP architecture and Sequelize ORM. Tools and technology used are Node.js, Express.js, Sequelize, and MySQL.
 
 ## Design Architecture
-![Untitled-2023-10-13-2148](https://github.com/RazinSyakib43/express-mvc-orm/assets/72656623/91d7b540-4a22-4450-bad1-e85e6f5ec8c3)
+<img src="./assets/readme/images/Untitled-2023-10-13-2148.png" alt="Design Architecture">
 
 ## Technologies Used
 - Node.js
