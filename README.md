@@ -1,5 +1,8 @@
 # express-mvc-orm
-A simple REST API with MVP architecture and Sequelize ORM. Tools and technology used are Node.js, Express.js, Sequelize , and MySQL.
+A simple REST API with MVP architecture and Sequelize ORM. Tools and technology used are Node.js, Express.js, Sequelize, and MySQL.
+
+## Design Architecture
+![Untitled-2023-10-13-2148](https://github.com/RazinSyakib43/express-mvc-orm/assets/72656623/91d7b540-4a22-4450-bad1-e85e6f5ec8c3)
 
 ## Technologies Used
 - Node.js
@@ -9,7 +12,7 @@ A simple REST API with MVP architecture and Sequelize ORM. Tools and technology 
 
 ## How To Run:
 - Local Host: Run with Postman, local IP and Port:5000 `http://127.0.0.1:3000/api/v1/books` or `http://localhost:3000/api/v1/books`
-- Online Domain : not deployed yet
+- Online Domain: not deployed yet
 
 ## Installation:
 1. Install project dependencies:
