@@ -45,27 +45,30 @@ const getBookById = async (req, res) => {
 };
 
 // post new book
-const createNewBook = (req, res) => {
-  const { title, description } = req.body;
+const createNewBook = async (req, res) => {
+  try{
+    const { title, description } = req.body;
+    const newBook = await Book.create({
+      title: title,
+      description: description,
+    });
 
-  // get new id for new book
-  const lastItemBookId = books[books.length - 1].id;
-  const newIdBook = lastItemBookId + 1;
-
-  const newBookData = {
-    id: newIdBook,
-    title: title,
-    description: description,
-  };
-  books.push(newBookData);
-
-  res.status(201).json({
-    code: 201,
-    status: "success",
-    error: false,
-    message: "Book created successfully",
-    data: newBookData,
-  });
+    res.status(201).json({
+      code: 201,
+      status: "success",
+      error: false,
+      message: "Book created successfully",
+      data: {
+        id: newBook.id,
+        title: newBook.title,
+        description: newBook.description,
+        createdAt: newBook.createdAt,
+        updatedAt: newBook.updatedAt,
+      },
+    });
+  } catch (error) {
+    console.log(error, "<- error createNewBook");
+  }
 };
 
 module.exports = {
