@@ -118,9 +118,49 @@ const updateBookById = async (req, res) => {
   }
 };
 
+const deleteBookById = async (req, res) => { 
+  try{
+    // get book id from params
+    const { id } = req.params;
+    // find book by id from params
+    const book = await Book.findByPk(id);
+
+    // if book not found or found
+    if (!book) {
+      res.status(404).json({
+        code: 404,
+        status: "error",
+        error: true,
+        message: `Book with id ${id} not found`,
+      });
+    }
+
+    // delete book data from database
+    await book.destroy();
+
+    // response deleted book
+    res.status(200).json({
+      code: 200,
+      status: "success",
+      error: false,
+      message: "Book deleted successfully",
+      data: {
+        id: id,
+        title: book.title,
+        description: book.description,
+        createdAt: book.createdAt,
+        updatedAt: book.updatedAt,
+      },
+    });
+  } catch (error) {
+    console.log(error, "<- error deleteBookById");
+  }
+}
+
 module.exports = {
   findAllBooks,
   getBookById,
   createNewBook,
   updateBookById,
+  deleteBookById,
 };
