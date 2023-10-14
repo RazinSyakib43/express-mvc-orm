@@ -1,5 +1,5 @@
 # express-mvc-orm
-A simple REST API with MVP architecture and Sequelize ORM.
+A simple REST API with MVP architecture and Sequelize ORM. Tools and technology used are Node.js, Express.js, Sequelize , and MySQL.
 
 ## Technologies Used
 - Node.js
