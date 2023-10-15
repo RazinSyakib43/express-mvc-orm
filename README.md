@@ -45,7 +45,9 @@ npm run start-dev
 npx sequelize-cli db:migrate
 ```
 6. Create initial data:
-``npx sequelize-cli db:seed:all``
+```
+npx sequelize-cli db:seed:all
+```
 7. Run the server again to apply the new database configurations.
 
 ## API Endpoints:
